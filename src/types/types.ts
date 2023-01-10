@@ -1,8 +1,7 @@
 import { Request } from 'express';
 
-
 declare global {
-    namespace Exoress {
+    namespace Express {
         export interface Request {
             userId: string
         }
