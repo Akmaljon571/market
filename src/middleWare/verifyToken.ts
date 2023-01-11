@@ -7,7 +7,13 @@ export default (req: Request, res: Response, next: NextFunction) => {
 
     if (typeof auth_token === "string") {
         const userId = JWT.verify(auth_token)
-        return userId
+
+        if (typeof userId === 'string') {
+            req.userId = userId
+            next()
+        } else {
+            throw new ErrorHandle('Not Token', 401)
+        }
     } else {
         throw new ErrorHandle('Not Token', 401)
     }
