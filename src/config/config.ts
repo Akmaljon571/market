@@ -7,4 +7,4 @@ const pgConfig = process.env.DATABASE;
 
 const secretKey: string = process.env.SECRET_KEY || "qale";
 
-export {PORT,pgConfig,secretKey};
+export {PORT, pgConfig, secretKey};

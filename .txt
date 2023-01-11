@@ -1,9 +1,11 @@
 1) login / Registr
-2) User / product
-3) Category / 
+2) Dastavka 
+3) Product 
 4) Like / Karzinka
+5) Category 
 
 1) Nodir aka 4
 2) Jaur 3
 3) Jabbor 1
 4) Akmal 2
+5) Doston aka 5
