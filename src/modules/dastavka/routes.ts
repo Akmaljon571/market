@@ -3,4 +3,4 @@ import verifyToken from "../../middleWare/verifyToken";
 import { dastavkaGet } from "./dastavka";
 
 export default Router()
-    .get('/get', verifyToken ,dastavkaGet)
+    .get('/get', verifyToken, dastavkaGet)

@@ -11,27 +11,29 @@ const pool = new Pool({
 class PG {
     private pool = pool
 
-    async fetchAll (SQL: string, ...params: (string | number | boolean)[]) {
+    async fetchAll <T>(SQL: string, ...params: (string | number | boolean)[]): Promise<T[]> {
         const client = await this.pool.connect()
         try {
             const { rows } = await client.query(SQL, params)
+            
             return rows
         } catch (error) {
             console.log(error)
-            throw new ErrorHandle('Bazada bunday malumot yoq', 401)
+            throw new ErrorHandle('Error in Database', 500)
         } finally {
             await client.release()
         }
     }
 
-    async fetchOne (SQL: string, ...params: (string | number | boolean)[]) {
+    async fetchOne <T> (SQL: string, ...params: (string | number | boolean)[]): Promise<T>  {
         const client = await this.pool.connect()
         try {
-            const { rows } = await client.query(SQL, params)
+            const { rows: [ rows ] } = await client.query(SQL, params)
+
             return rows
         } catch (error) {
             console.log(error)
-            throw new ErrorHandle('Bazada bunday malumot yoq', 401)
+            throw new ErrorHandle('Error in Database', 500)
         } finally {
             await client.release()
         }
