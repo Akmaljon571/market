@@ -17,12 +17,13 @@ declare global {
 declare global {
     namespace Express {
         export interface Request {
-            resolt: {
+            result: {
                 id?: string
                 name?: string
                 mail?: string
                 phone?: string
                 password?: string 
+                title?: string
             }
         }
     }
