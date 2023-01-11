@@ -13,7 +13,6 @@ export const dastavkaGet = (req: Request, res: Response, next: NextFunction) => 
             data: allProduct
         })
 
-        // nmadur hatolar chiqmasligi uchun commit
 
     } catch (error) {
         console.log(error)
