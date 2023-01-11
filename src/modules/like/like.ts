@@ -20,7 +20,8 @@ export const Create_like = async(req: Request, res: Response, next: NextFunction
     try {
         const { auth_token, productId } = req.body
         if (typeof auth_token === 'string') {
-
+            console.log(productId);
+            
             const userId = JWT.verify(auth_token)
 
             if (typeof userId === 'string') {
