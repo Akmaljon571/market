@@ -6,6 +6,12 @@ export interface findUser {
     user_password: string
 }
 
+export interface newLike {
+    like_id: string,
+    product_id: string,
+    user_id: string
+}
+
 declare global {
     namespace Express {
         export interface Request {

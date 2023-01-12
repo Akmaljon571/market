@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from "express"
-import JWT from "../../utils/JWT";
+import { ErrorHandle } from "../../error/error";
 import postgres from "../../utils/postgres";
-import { allLikes, CREATE_LIKE } from "./model";
+import { allLikes, CREATE_LIKE, DELETE_Like } from "./model";
 
 export const likeGet = async (req: Request, res: Response, next: NextFunction) => {
     try {
@@ -18,19 +18,38 @@ export const likeGet = async (req: Request, res: Response, next: NextFunction) =
 }
 export const Create_like = async(req: Request, res: Response, next: NextFunction) => {
     try {
-        const { auth_token, productId } = req.body
-        if (typeof auth_token === 'string') {
+        const { userId } = req
+        const {  productId } = req.body
+        if (typeof userId === 'string') {
             console.log(productId);
-            
-            const userId = JWT.verify(auth_token)
-
-            if (typeof userId === 'string') {
+            if (typeof productId === 'string') {
                const newLike = await postgres.fetchOne(CREATE_LIKE, userId, productId)
                return res.json({
                 status: 201,
                 data: newLike
                })
             }
+
+        }else{
+            throw new Error('Ineternal Error')
+        }
+    } catch (error) {
+        console.log(error);
+        next(error)
+    }
+}
+
+export const deleteLike = async(req: Request, res: Response, next: NextFunction) => {
+    try {
+       
+        const {  productId } = req.params
+        if (typeof productId === 'string') {
+            console.log(productId);
+               const deletedLike = await postgres.fetchOne(DELETE_Like, productId)
+               return res.status(200).json({
+                status: 200,
+                message: 'Deleted successfully'
+               })
 
         }
     } catch (error) {
