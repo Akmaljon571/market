@@ -24,6 +24,12 @@ declare global {
                 phone?: string
                 password?: string 
                 title?: string
+                city?: string
+                street?: string
+                distreet?: string
+                home?: string
+                productId?: string[]
+                number?: string
             }
         }
     }
