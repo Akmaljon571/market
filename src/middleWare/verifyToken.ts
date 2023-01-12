@@ -6,6 +6,7 @@ export default (req: Request, res: Response, next: NextFunction) => {
     try {
         const { auth_token } = req.headers
 
+        console.log(JWT.sing('akmal@gmail.com'))
         if (typeof auth_token === "string") {
             const userId = JWT.verify(auth_token)
 
