@@ -5,7 +5,7 @@ import { ErrorHandle } from "../error/error";
 dotenv.config()
 
 const pool = new Pool({
-    connectionString: pgConfig || "postgres://postgres:akmal@localhost/jamoa"
+    connectionString: pgConfig || "postgres://postgres:RD20001202@localhost/n33"
 })
 
 class PG {

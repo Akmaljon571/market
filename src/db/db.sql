@@ -75,3 +75,5 @@ CREATE TABLE dastavka(
     REFERENCES users(user_id)
     ON DELETE CASCADE
 );
+
+
