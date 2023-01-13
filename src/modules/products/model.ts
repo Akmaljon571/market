@@ -1,4 +1,6 @@
-export const allProducts = `
+import postgres from '../../utils/postgres';
+
+export const ALL_PRODUCTS = `
     SELECT 
         p.product_id,
         c.category_title,    
@@ -13,3 +15,5 @@ export const allProducts = `
     ON
         c.category_id = p.category_id
 `;
+
+export const allProducts = () => postgres.fetchAll(ALL_PRODUCTS);
