@@ -51,6 +51,8 @@ export const deleteLike = async(req: Request, res: Response, next: NextFunction)
                 message: 'Deleted successfully'
                })
 
+        }else{
+            throw new Error('Ineternal Error')
         }
     } catch (error) {
         console.log(error);
