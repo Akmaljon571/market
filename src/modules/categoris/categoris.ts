@@ -60,9 +60,12 @@ const CATEGORY_DELETE = async(req:Request, res:Response, next:NextFunction) =>  
         }
         const { category_id } = value;
         
-        const category =  MODEL_CATEGORY_DELETE(category_id)
+        const category = await  MODEL_CATEGORY_DELETE(category_id)
             .catch(error => next(new ErrorHandle(error as any, 400)));
-        res.send(category);
+        res.status(200).json({
+            status:200,
+            data:category
+        });
     }
     catch (error) {
         console.log(error);
