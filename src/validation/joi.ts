@@ -13,6 +13,26 @@ export const registerJoi = Joi.object({
 }).required()
 // Ended Autharization
 
+// Categoris
+export const categoris = Joi.object().keys({
+    category_title:  Joi.string().required().min(2).max(50)
+});
+export const categoryId = Joi.object().keys({
+    category_id:Joi.string().required()
+});
+
+
+// Aksia
+export const aksia_Jo = Joi.object().keys({
+    foiz: Joi.number().required().min(1).max(100)
+})
+export const categoryId_Joi = Joi.object().keys({
+    product_id:Joi.string().required()
+});
+
+export const aksiaId = Joi.object().keys({
+    aksia_id:Joi.string().required()
+});
 export const createDastavkaSchema = Joi.object({
     city: Joi.string().required(), 
     street: Joi.string().required(), 
