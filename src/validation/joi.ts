@@ -33,3 +33,11 @@ export const categoryId_Joi = Joi.object().keys({
 export const aksiaId = Joi.object().keys({
     aksia_id:Joi.string().required()
 });
+export const createDastavkaSchema = Joi.object({
+    city: Joi.string().required(), 
+    street: Joi.string().required(), 
+    distreet: Joi.string().required(), 
+    home: Joi.string().required(), 
+    productId: Joi.array().required(), 
+    number: Joi.string().required()
+})

@@ -4,13 +4,18 @@ import { ErrorHandle } from "../error/error";
 
 export default (schema: Joi.ObjectSchema) => {
     return (req: Request, res: Response, next: NextFunction) => {
-        const { error, value } = schema.validate(req.body)
+        try {
+            const { error, value } = schema.validate(req.body)
 
-        if (error) {
-            throw new ErrorHandle(`${error}`, 401)
+            if (error) {
+                throw new ErrorHandle(`${error}`, 401)
+            } 
+
+            req.result = value
+            next()
+        } catch (error) {
+            console.log(error)
+            next(error)
         }
-
-        req.resolt = value
-        next()
     }   
 }
