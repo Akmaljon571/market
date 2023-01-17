@@ -24,10 +24,7 @@ app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
     })
 })
 
-app.all("/*", (_: Request, res: Response) => {
-    console.log('Ok')
-    res.json("ok")
-})
+app.all("/*", (_: Request, res: Response) => res.sendStatus(404))
 export {
     app
 }
