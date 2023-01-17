@@ -24,6 +24,7 @@ const CATEGORY_POST =  async(req:Request, res:Response, next:NextFunction)=>  {
         const { category_title } = value;
         const category = await  MODEL_CATEGORY_POST(category_title)
             .catch(error => next(new ErrorHandle(error.message, 400)));
+            
         res.send(category);
     }
     catch (error) {
