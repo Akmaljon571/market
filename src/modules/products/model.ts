@@ -16,4 +16,6 @@ export const ALL_PRODUCTS = `
         c.category_id = p.category_id
 `;
 
-export const allProducts = () => postgres.fetchAll(ALL_PRODUCTS);
+export const NEW_PRODUCT = `
+    insert into product(product_title, product_price, product_color, product_img, category_id) values($1, $2, $3, $4, $5)
+`;
